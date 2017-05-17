@@ -17,6 +17,7 @@ class Home
       }
       else
       {
+          var_dump($_SESSION);
           echo Blade::render('home');
       }
   }
@@ -25,7 +26,7 @@ class Home
     {
         if(!Session::exists('login'))
         {
-            $summoner =(strtolower($summoner));
+            $summoner =(strtolower(Input::get('summoner')));
             $data = api('summoner/by-name/' . $summoner, '1.4', 'tr')->$summoner;
             Session::set('login', true);
             Session::set('summoner', $data->name);
