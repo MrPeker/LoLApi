@@ -34,7 +34,7 @@ class Home
         if(!Session::exists('login'))
         {
             $summoner =(strtolower(Input::get('summoner')));
-            $data = api('summoner/by-name/' . $summoner, '1.4', 'tr')->$summoner;
+            $data = json_decode(file_get_contents('https://tr1.api.riotgames.com/lol/summoner/v3/summoners/by-name/'. preg_replace('/\s/','%20', Input::get('summoner')) .'?api_key='. API_KEY));
             Session::set('login', true);
             Session::set('summoner', $data->name);
             Session::set('id', $data->id);
