@@ -2,87 +2,49 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Neptune Framework</title>
+  <title> {{ $title }}</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
-  <style media="screen">
-    * {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      text-decoration: none;
-  }
-  body {
-      background-color: #FFFFFF;
-      overflow: hidden;
+  {!! $css !!}
 
-  }
-  .general {
-      position: absolute;
-      width: 101%;
-      height: 100%;
-      margin-left:0%;
-      overflow-y: scroll;
-
-  }
-  .general .neptune {
-    font-family: 'Roboto', sans-serif;
-    color: #999999;
-    margin-top:15vh;
-    font-size: 65px;
-    font-weight: lighter;
-    text-align: center;
-  }
-  .general .framework {
-    font-family: 'Roboto', sans-serif;
-    color: #999999;
-    font-size: 150px;
-    font-weight: lighter;
-    text-align: center;
-  }
-  .general .version {
-    font-family: 'Roboto', sans-serif;
-    color: #999999;
-    margin-top:5px;
-    font-size: 75px;
-    font-weight: lighter;
-    text-align: center;
-  }
-  .general .copyright {
-    font-family: 'Roboto', sans-serif;
-    color: #999999;
-    margin-top:35px;
-    font-size: 45px;
-    font-weight: lighter;
-    text-align: center;
-  }
-    .general .slogan {
-      font-family: 'Roboto', sans-serif;
-      color: #999999;
-      margin-top:35px;
-      font-size: 35px;
-      font-weight: lighter;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
-  <div class="general">
-    <div class="neptune">
-      {{ \Libs\Languages\Languages::temporarilySet(['en_US' => 'Hello Astronaut! Are you ready to fly to Neptune?', 'tr_TR' => "Merhaba Astronot! Neptune'ye uçmaya hazır mısın?"]) }}
+
+<div>
+    <div class="head">
+        <div class="summoner">
+            <div class="summoner_img">
+                <img src="https://avatar.leagueoflegends.com/tr/{{ \System\Session::get('summoner') }}.png" alt="">
+            </div>
+            <div class="summoner_name">{{ \System\Session::get('summoner') }}</div>
+        </div>
     </div>
-    <div class="framework">
-      Neptune Framework
+    <div class="body">
+        <div class="matches">
+            @foreach ($matches->matches as $match)
+            @php
+                $champion = \Database\Databases\Lol\ChampionTable::find($match->champion);
+            @endphp
+            <div class="match">
+
+                <div class="match_head">
+                    <div class="match_image">
+                        <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/{{ trim($champion->champ_key) }}.png" alt="">
+                    </div>
+                    <div class="match_title">
+                        {{ $champion->name  }}
+                    </div>
+                </div>
+                <div class="match_body">
+
+                </div>
+
+            </div>
+            @endforeach
+        </div>
     </div>
-    <div class="version">
-      Beta V1
-    </div>
-    <div class="copyright">
-      &copy; 2016-2017 Emirhan Engin, Mehmet Ali Peker
-    </div>
-    <div class="slogan">
-      {{ \Libs\Languages\Languages::temporarilySet(['en_US' => 'The Neptune Framework is an approach that comes from the depths of space!', 'tr_TR' => "Neptune Framework uzayın derinliklerinden gelen bir yaklaşım!"]) }}
-    </div>
-  </div>
+</div>
+
+  {!! $js !!}
+
 </body>
 </html>

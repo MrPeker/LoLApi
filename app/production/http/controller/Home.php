@@ -1,14 +1,18 @@
 <?php
 namespace App\Production\Http\Controller;
 
+use Database\Databases\Lol\ChampionTable;
 use Libs\Connect\Connect;
 use duncan3dc\Laravel\Blade;
 use Libs\Input\Input;
+use System\Core;
 use System\Response;
 use System\Session;
 
 class Home
 {
+  use Core;
+
   public function index()
   {
       if(!Session::exists('login'))
@@ -17,8 +21,11 @@ class Home
       }
       else
       {
+          $data['title'] = Session::get('summoner') . ' adlı sihirdara ait maçlar.';
+          $data['css'] = $this->assets->getAssetsGroup('home')->useAllAssets('css')->returnedData;
+          $data['js'] = $this->assets->getAssetsGroup('home')->useAllAssets('js')->returnedData;
           $data['matches'] = api('matchlist/by-summoner/' . Session::get('id') . '', '2.2', 'tr');
-          echo Blade::render('home');
+          echo Blade::render('home', $data);
       }
   }
 
