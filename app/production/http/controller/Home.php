@@ -17,7 +17,7 @@ class Home
       }
       else
       {
-          var_dump($_SESSION);
+          $data['matches'] = api('matchlist/by-summoner/' . Session::get('id') . '', '2.2', 'tr');
           echo Blade::render('home');
       }
   }
