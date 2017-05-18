@@ -1,0 +1,84 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.backdrop {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    min-width: 1000px;
+    height: 1080px;
+    z-index: -10;
+    background-color: black;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-image: url(resources/images/bg-default.jpg);
+    top: 0;
+}
+.head {
+    width: 80vw;
+    height: 30vh;
+    margin: auto;
+    margin-top: 10vh;
+    background: rgba(0,0,0,.3);
+}
+.head > .summoner
+{
+    margin: auto;
+    width: 75vw;
+    height: 30vh;
+}
+.head > .summoner > .summoner_img
+{
+    width: 100px;
+    height:100px;
+    line-height: 30vh;
+}
+.head > .summoner > .summoner_name
+{
+    margin-left: 150px;
+    font-size: 45px;
+    margin-top: 1.5vh;
+    color: goldenrod;
+    text-shadow: 1px 1px #000;
+
+}
+
+.body {
+    width: 80vw;
+    margin: auto;
+    margin-top: 5vh;
+    background: rgba(255,255,255,.1);
+}
+
+.body .matches
+{
+    padding-top: 15px;
+    margin: 15px;
+}
+.body .matches .match
+{
+    width: 80vw;
+    height: 150px;
+}
+.match_head
+{
+    width: 80vw;
+    height: 100px;
+}
+.match_image {
+    height: 100px;
+    margin: 0;
+    width: 100px;
+}
+.body .matches .match_head .match_title
+{
+    margin-left: 150px;
+    font-size: 45px;
+    margin-top: -70px;
+    color: whitesmoke;
+    text-shadow: 1px 1px #000;
+}
